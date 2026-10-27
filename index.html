@@ -59,6 +59,10 @@
     .sticker{position:absolute;z-index:2;background:#fffdf9;border-radius:50%;width:94px;height:94px;display:grid;place-items:center;text-align:center;font-size:.77rem;font-weight:700;line-height:1.2;color:var(--rose);right:5%;bottom:12%;transform:rotate(9deg);box-shadow:0 8px 20px #4a33431a}
     section{padding:66px 0}.section-head{text-align:center;max-width:620px;margin:0 auto 32px}.section-head .eyebrow{margin-bottom:14px}.section-head h2{font-size:clamp(2rem,3.5vw,3rem)}.section-head p{color:var(--muted);margin:12px 0 0}
     .filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}.filter{border:1px solid var(--line);background:white;color:var(--muted);border-radius:999px;padding:9px 15px;font:inherit;font-size:.88rem;cursor:pointer}.filter.active,.filter:hover{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+    .subfilters{margin-top:-14px;margin-bottom:28px;min-height:38px}
+    .subfilters .filter{padding:7px 13px;font-size:.82rem;background:#fffdfb}
+    .subfilters .filter.active,.subfilters .filter:hover{background:var(--lilac);border-color:#d9c8ee;color:var(--ink)}
+    .subfilters:empty{display:none}
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.art-card{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s}.art-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px #55334310}.art-photo{height:260px;background:#f4e8ed;overflow:hidden;position:relative}.art-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.art-card:hover .art-photo img{transform:scale(1.04)}
     .art-tag{position:absolute;top:13px;left:13px;background:#fffdf2eF;border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:700;color:#735967}.art-info{padding:19px}.art-info h3{font-size:1.35rem}.art-info p{color:var(--muted);font-size:.9rem;min-height:48px;margin:9px 0 17px}.art-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px}.price{font-size:.88rem;font-weight:700;color:var(--rose)}.enquire{border:0;background:#e8f2e7;color:#3d7148;padding:9px 13px;border-radius:999px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer}.enquire:hover{background:#d5e9d3}
     .custom{background:var(--lilac);border-radius:30px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}.custom h2{font-size:clamp(2rem,3vw,2.8rem);max-width:570px}.custom p{color:var(--muted);max-width:620px}.custom .btn{white-space:nowrap}
@@ -125,39 +129,40 @@
   <section id="gallery">
     <div class="wrap">
       <div class="section-head"><span class="eyebrow">THE LITTLE ART SHOP</span><h2>A few things I've made</h2><p>Every piece has its own personality. Find a favourite, then message me for details or a custom request.</p></div>
-      <div class="filters" role="group" aria-label="Filter artworks">
-        <button class="filter active" data-filter="all">Acrylic</button>
-        <button class="filter" data-filter="canvas">Watercolour</button>
-        <button class="filter" data-filter="custom">DIY</button>
-        <button class="filter" data-filter="gifts">Custom order</button>
+      <div class="filters" role="group" aria-label="Filter artwork types">
+        <button class="filter active" data-filter="acrylic">Acrylic</button>
+        <button class="filter" data-filter="watercolour">Watercolour</button>
+        <button class="filter" data-filter="diy">DIY</button>
+        <button class="filter" data-filter="custom-order">Custom order</button>
       </div>
+      <div id="subcategories" class="filters subfilters" role="group" aria-label="Artwork subcategories"></div>
       <div class="gallery">
-        <article class="art-card" data-category="canvas">
+        <article class="art-card" data-category="acrylic" data-subcategory="mini-canvas">
           <div class="art-photo"><img src="images/mini-canvas.jpg" alt="Mini canvas painting" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Mini canvas</span></div>
           <div class="art-info"><h3>Little Canvas Dreams</h3><p>Small-scale acrylic art made to bring a soft pop of colour to your favourite corner.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Little Canvas Dreams">Enquire ↗</button></div></div>
         </article>
-        <article class="art-card" data-category="custom">
+        <article class="art-card" data-category="custom-order" data-subcategory="custom-artwork">
           <div class="art-photo"><img src="images/custom-art.jpg" alt="Personalized artwork" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Made for you</span></div>
           <div class="art-info"><h3>A Little Something Yours</h3><p>A personalized artwork inspired by your idea, memory, favourite colours, or special person.</p><div class="art-bottom"><span class="price">Custom quote</span><button class="enquire" data-art="A Little Something Yours">Enquire ↗</button></div></div>
         </article>
-        <article class="art-card" data-category="gifts">
-          <div class="art-photo"><img src="images/painted-gift.jpg" alt="Hand-painted object or gift" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Painted gifts</span></div>
-          <div class="art-info"><h3>Everyday, Reimagined</h3><p>Ordinary objects made extra special with hand-painted details and a creative touch.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Everyday, Reimagined">Enquire ↗</button></div></div>
+        <article class="art-card" data-category="acrylic" data-subcategory="pot-painting">
+          <div class="art-photo"><img src="images/painted-gift.jpg" alt="Hand-painted object or gift" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Pot painting</span></div>
+          <div class="art-info"><h3>Little Pot Creations</h3><p>A placeholder for your hand-painted pot artwork. Replace this with your own photo and details.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Everyday, Reimagined">Enquire ↗</button></div></div>
         </article>
-        <article class="art-card" data-category="canvas">
-          <div class="art-photo"><img src="images/pastel-art.jpg" alt="Pastel acrylic artwork" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Pastel palette</span></div>
-          <div class="art-info"><h3>Soft Hues</h3><p>Dreamy colours and gentle details for anyone who loves a calm, cheerful aesthetic.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Soft Hues">Enquire ↗</button></div></div>
+        <article class="art-card" data-category="watercolour" data-subcategory="nature">
+          <div class="art-photo"><img src="images/pastel-art.jpg" alt="Pastel acrylic artwork" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Watercolour · Nature</span></div>
+          <div class="art-info"><h3>Nature in Watercolour</h3><p>A placeholder for your watercolour nature artwork. Replace this with your own photo and details.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Soft Hues">Enquire ↗</button></div></div>
         </article>
-        <article class="art-card" data-category="gifts">
-          <div class="art-photo"><img src="images/handmade-gift.jpg" alt="Creative handmade gift" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Gift ideas</span></div>
-          <div class="art-info"><h3>Made to Make You Smile</h3><p>A thoughtful handmade gift for birthdays, celebrations, or just because.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Made to Make You Smile">Enquire ↗</button></div></div>
+        <article class="art-card" data-category="watercolour" data-subcategory="food">
+          <div class="art-photo"><img src="images/handmade-gift.jpg" alt="Creative handmade gift" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Watercolour · Food</span></div>
+          <div class="art-info"><h3>Food in Watercolour</h3><p>A placeholder for your watercolour food artwork. Replace this with your own photo and details.</p><div class="art-bottom"><span class="price">Price on enquiry</span><button class="enquire" data-art="Made to Make You Smile">Enquire ↗</button></div></div>
         </article>
-        <article class="art-card" data-category="custom">
-          <div class="art-photo"><img src="images/hanu-baba.jpg" alt="Custom art idea" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">Your idea</span></div>
-          <div class="art-info"><h3>Let's Create Together</h3><p>Have an idea that isn't shown here? Tell me what you're imagining and let's make it real.</p><div class="art-bottom"><span class="price">Let's discuss</span><button class="enquire" data-art="Let's Create Together">Enquire ↗</button></div></div>
+        <article class="art-card" data-category="diy" data-subcategory="claywork">
+          <div class="art-photo"><img src="images/hanu-baba.jpg" alt="Custom art idea" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=85'"><span class="art-tag">DIY · ClayWork</span></div>
+          <div class="art-info"><h3>ClayWork Creations</h3><p>A placeholder for your DIY claywork. Replace this with your own photo and details.</p><div class="art-bottom"><span class="price">Let's discuss</span><button class="enquire" data-art="Let's Create Together">Enquire ↗</button></div></div>
         </article>
       </div>
-      <p class="tiny-note" style="text-align:center">Note: Gallery images are temporary examples. Replace them with your own artwork photos before publishing.</p>
+      <p class="tiny-note" style="text-align:center">Gallery photos are temporary placeholders. Replace them with your own artwork photos when ready.</p>
     </div>
   </section>
 
@@ -188,7 +193,7 @@
 
   function openWhatsApp(message) {
     const notice = document.getElementById("wa-notice");
-    if (!WHATSAPP_NUMBER || !/^\d{8,15}$/.test(WHATSAPP_NUMBER)) {s
+    if (!WHATSAPP_NUMBER || !/^\d{8,15}$/.test(WHATSAPP_NUMBER)) {
       notice.classList.add("show");
       notice.scrollIntoView({behavior:"smooth", block:"nearest"});
       return;
@@ -211,15 +216,83 @@
       openWhatsApp("Hi megsart! I'm interested in \"" + button.dataset.art + "\". Could you please share the price and details?");
     });
   });
-  document.querySelectorAll(".filter").forEach(button => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".filter").forEach(b => b.classList.toggle("active", b === button));
-      const filter = button.dataset.filter;
-      document.querySelectorAll(".art-card").forEach(card => {
-        card.style.display = filter === "all" || card.dataset.category === filter ? "" : "none";
+  // Main categories and their requested subcategories.
+  const subcategoryOptions = {
+    acrylic: [
+      { label: "All", value: "all" },
+      { label: "Mini Canvas", value: "mini-canvas" },
+      { label: "Pot painting", value: "pot-painting" },
+      { label: "Mythological characters", value: "mythological-characters" },
+      { label: "Anime Characters", value: "anime-characters" },
+      { label: "Cartoon Characters", value: "cartoon-characters" }
+    ],
+    watercolour: [
+      { label: "All", value: "all" },
+      { label: "Nature", value: "nature" },
+      { label: "Portraits", value: "portraits" },
+      { label: "Food", value: "food" }
+    ],
+    diy: [
+      { label: "All", value: "all" },
+      { label: "Pipecleaner", value: "pipecleaner" },
+      { label: "Origami", value: "origami" },
+      { label: "ClayWork", value: "claywork" }
+    ],
+    "custom-order": [
+      { label: "All", value: "all" },
+      { label: "Custom Artwork", value: "custom-artwork" }
+    ]
+  };
+
+  const mainFilters = document.querySelectorAll('.filters:not(#subcategories) .filter');
+  const subcategoryContainer = document.getElementById("subcategories");
+  const artworkCards = document.querySelectorAll(".art-card");
+  let selectedCategory = "acrylic";
+  let selectedSubcategory = "all";
+
+  function filterArtworks() {
+    artworkCards.forEach(card => {
+      const matchesCategory = card.dataset.category === selectedCategory;
+      const matchesSubcategory = selectedSubcategory === "all" ||
+        card.dataset.subcategory === selectedSubcategory;
+      card.style.display = matchesCategory && matchesSubcategory ? "" : "none";
+    });
+  }
+
+  function showSubcategories(category) {
+    subcategoryContainer.innerHTML = "";
+    (subcategoryOptions[category] || []).forEach(subcategory => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "filter";
+      button.textContent = subcategory.label;
+      button.dataset.subcategory = subcategory.value;
+      if (subcategory.value === "all") button.classList.add("active");
+
+      button.addEventListener("click", () => {
+        subcategoryContainer.querySelectorAll(".filter").forEach(item => {
+          item.classList.toggle("active", item === button);
+        });
+        selectedSubcategory = subcategory.value;
+        filterArtworks();
       });
+      subcategoryContainer.appendChild(button);
+    });
+  }
+
+  mainFilters.forEach(button => {
+    button.addEventListener("click", () => {
+      mainFilters.forEach(item => item.classList.toggle("active", item === button));
+      selectedCategory = button.dataset.filter;
+      selectedSubcategory = "all";
+      showSubcategories(selectedCategory);
+      filterArtworks();
     });
   });
+
+  // Start with Acrylic selected and show its matching artworks.
+  showSubcategories(selectedCategory);
+  filterArtworks();
 </script>
 </body>
 </html>
