@@ -17,20 +17,33 @@
     .nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.4rem;letter-spacing:-.06em}
     
 
+
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand .logo {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 150px;
+  height: 80px;
   object-fit: contain;
+  object-position: left center;
   flex-shrink: 0;
+  border: none;
+  background: transparent;
 }
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .brand .logo {
+    width: 115px;
+    height: 65px;
+  }
+}
+
 
 
     .links{display:flex;gap:26px;align-items:center;font-size:.92rem;color:var(--muted)}.links a:hover{color:var(--rose)}
