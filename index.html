@@ -16,34 +16,26 @@
     header{position:sticky;top:0;z-index:10;background:rgba(255,248,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
     .nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.4rem;letter-spacing:-.06em}
     
-
-
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  text-decoration: none;
   flex-shrink: 0;
 }
 
-.brand .logo {
+.brand-logo {
   display: block;
   width: 150px;
-  height: 80px;
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
-  object-position: left center;
-  flex-shrink: 0;
-  border: none;
-  background: transparent;
 }
 
-/* Smaller screens */
+/* Smaller logo on mobile */
 @media (max-width: 600px) {
-  .brand .logo {
-    width: 115px;
-    height: 65px;
+  .brand-logo {
+    width: 130px;
   }
 }
-
 
 
     .links{display:flex;gap:26px;align-items:center;font-size:.92rem;color:var(--muted)}.links a:hover{color:var(--rose)}
@@ -75,13 +67,15 @@
   <div class="wrap nav">
     
 
-<a class="brand" href="#home" aria-label="megsart home">
+
+<a class="brand" href="#home" aria-label="Megsart home">
   <img
-    src="images/megsart-logo.png"
+    src="./images/megsart-logo.png"
     alt="Megsart logo"
-    class="logo"
+    class="brand-logo"
   >
 </a>
+
 
 
     <nav class="links" aria-label="Main navigation">
